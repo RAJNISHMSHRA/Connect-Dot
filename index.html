@@ -20,18 +20,24 @@
 
     <button class="btn btn-primary start-game" onclick="showgameBoard()">Start Game</button>
 
-    <h2>Game Started</h2>
-    <h4 class="player-turn"></h4>
-    <div class="container-holder">
-        <div id="myModal" class="modal">
+    <h2 class="Game-info">Game Started</h2>
+    <div class="User-info">
+        <h4 class="player-turn"></h4>
+        <div id="playericon" class="playercolor"></div>
+    </div>
+    
+    <div id="myModal1" class="modal-holder">
 
-            <!-- Modal content -->
-            <div class="modal-content">
-              <span class="close">&times;</span>
-              <p>Some text in the Modal..</p>
-            </div>
-          
-          </div>
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span id="closeModal" onclick="closeModalBtn()">&times;</span>
+         <!-- <input type="text" name="Name" value=""> -->
+         <h3 class="modal-text">Game Started</h3>
+        </div>
+      
+      </div>
+    <div class="container-holder">
+      
     
         <table id="Dot-table">
 

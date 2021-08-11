@@ -21,26 +21,52 @@ while (!rowCell){
 };
 
 
+// catching the dom element to perform the task on them later
+
+var tableRow = document.getElementsByTagName('tr');
+var tableData = document.getElementsByTagName('td');
+var playerTurn = document.querySelector('.player-turn');
+const slots = document.querySelectorAll('.slot');
+const resetBtn = document.querySelector('.reset');
+let playericon = document.querySelector('.playercolor');
+let modalContent = document.querySelector('.modal-text');
+const modal = document.getElementById("myModal1");
+let startGameDiv = document.querySelector('.Game-info');
+
+startGameDiv.innerHTML="Click start to Play";
+playerTurn="Best Of Luck"
 
 function showgameBoard(){
     const gameBoard= document.querySelector(".container-holder");
     const buttonStart = document.querySelector(".start-game")
-    
+    const modal = document.getElementById("myModal1");
+    const closeModal = document.getElementById("closeModal");
       if (buttonStart.innerHTML === "Start Game") {
         buttonStart.innerHTML= "Stop Game";
+        modal.style.display = "block";
+        startGameDiv.innerHTML="Game has Started"
       } else {
         buttonStart.innerHTML= "Start Game";
+        modal.style.display = "none";
+        startGameDiv.innerHTML="Click start to Play"
       }
 
       if (gameBoard.style.display === "none" || gameBoard.style.display === "") {
         gameBoard.style.display = "block";
+        modal.style.display = "block";
       } else {
         gameBoard.style.display = "none";
+        modal.style.display = "none";
       }
+
     
     // gameBoard.style.display="block";
     // buttonStart.innerHTML="Stop Game"
 }
+
+function closeModalBtn(){
+    modal.style.display = "none";
+  }
 
 //reating Dynamic Table using user input
 
@@ -61,13 +87,7 @@ function createDynamiCells (rowCell,columnCell){
 createDynamiCells(rowCell,columnCell)
 //
 
-// catching the dom element to perform the task on them later
 
-var tableRow = document.getElementsByTagName('tr');
-var tableData = document.getElementsByTagName('td');
-var playerTurn = document.querySelector('.player-turn');
-const slots = document.querySelectorAll('.slot');
-const resetBtn = document.querySelector('.reset');
 
 // setting defauly Player and winner 
 var currentPlayer = 1;
@@ -86,30 +106,44 @@ function changeColor(e){
         if (tableRow[i].children[column].style.backgroundColor == 'white'){
             row.push(tableRow[i].children[column]);
             if (currentPlayer === 1){
-                row[0].style.backgroundColor = 'red';
+                row[0].style.backgroundColor = player1Color;
                 if (horizontalCheck() || verticalCheck() || diagonalCheck() || diagonalCheck2()){
                     playerTurn.textContent = `${player1} WINS!!`;
                     playerTurn.style.color = player1Color;
+                    playericon.style.backgroundColor=player1Color;
+                    modalContent.innerHTML= `${player1} WINS!!`;
+                    modal.style.display = "block";
                     return alert(`${player1} WINS!!`);
                 }else if (drawCheck()){
                     playerTurn.textContent = 'DRAW!';
+                    modalContent.innerHTML= `Match was Draw!!`;
+                    modal.style.display = "block";
                     return alert('DRAW!');
                 }else{
                     playerTurn.textContent = `${player2}'s turn`
+                    playericon.style.backgroundColor=player2Color;
                     return currentPlayer = 2;
+                   
                 }
             }else{
-                row[0].style.backgroundColor = 'yellow';
+                row[0].style.backgroundColor = player2Color;
                 if (horizontalCheck() || verticalCheck() || diagonalCheck() || diagonalCheck2()){
                     playerTurn.textContent = `${player2} WINS!!`;
                     playerTurn.style.color = player2Color;
+                    playericon.style.backgroundColor=player2Color;
+                    modalContent.innerHTML= `${player2} WINS!!`;
+                    modal.style.display = "block";
                     return alert(`${player2} WINS!!`);
                 }else if (drawCheck()){
                     playerTurn.textContent = 'DRAW!';
+                    modalContent.innerHTML= `Match was Draw!!`;
+                    modal.style.display = "block";
                     return alert('DRAW!');
                 }else{
                     playerTurn.textContent = `${player1}'s turn`;
+                    playericon.style.backgroundColor=player1Color;
                     return currentPlayer = 1;
+                    
                 }
                 
             }
@@ -206,6 +240,7 @@ resetBtn.addEventListener('click', () => {
     slots.forEach(slot => {
         slot.style.backgroundColor = 'white';
     });
+    playericon.style.backgroundColor='white';
     playerTurn.style.color = 'black';
     return (currentPlayer === 1 ? playerTurn.textContent = `${player1}'s turn` : playerTurn.textContent = `${player2}'s turn`);
 });
