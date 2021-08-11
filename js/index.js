@@ -126,13 +126,13 @@ Array.prototype.forEach.call(tableData, (cell) => {
 });
 
 
-// function  toCheckMatchedCellColour(colOne,colTwo,colThree,colFour){
-//     return (colOne=== colTwo && colOne === colThree && colOne === colFour && colOne !== 'white' && colOne !== undefined)
-// }
-
-function colorMatchCheck(one, two, three, four){
-    return (one === two && one === three && one === four && one !== 'white' && one !== undefined);
+function  toCheckMatchedCellColour(colOne,colTwo,colThree,colFour){
+    return (colOne=== colTwo && colOne === colThree && colOne === colFour && colOne !== 'white' && colOne !== undefined)
 }
+
+// function toCheckMatchedCellColour(one, two, three, four){
+//     return (one === two && one === three && one === four && one !== 'white' && one !== undefined);
+// }
 
 
 //check for horizontal match
@@ -140,7 +140,7 @@ function colorMatchCheck(one, two, three, four){
 function horizontalCheck(){
     for (let row = 0; row < tableRow.length; row++){
         for (let col =0; col < tableRow[row].childElementCount-3; col++){
-           if (colorMatchCheck(tableRow[row].children[col].style.backgroundColor,tableRow[row].children[col+1].style.backgroundColor, 
+           if (toCheckMatchedCellColour(tableRow[row].children[col].style.backgroundColor,tableRow[row].children[col+1].style.backgroundColor, 
                                 tableRow[row].children[col+2].style.backgroundColor, tableRow[row].children[col+3].style.backgroundColor)){
                return true;
            }
@@ -153,7 +153,7 @@ function horizontalCheck(){
 function verticalCheck(){
     for (let col = 0; col < +columnCell; col++){
         for (let row = 0; row < +rowCell -3; row++){
-            if (colorMatchCheck(tableRow[row].children[col].style.backgroundColor, tableRow[row+1].children[col].style.backgroundColor,
+            if (toCheckMatchedCellColour(tableRow[row].children[col].style.backgroundColor, tableRow[row+1].children[col].style.backgroundColor,
                                 tableRow[row+2].children[col].style.backgroundColor,tableRow[row+3].children[col].style.backgroundColor)){
                 return true;
             };
@@ -166,7 +166,7 @@ function verticalCheck(){
 function diagonalCheck(){
     for(let col = 0; col < +columnCell-3; col++){
         for (let row = 0; row <  +rowCell -3; row++){
-            if (colorMatchCheck(tableRow[row].children[col].style.backgroundColor, tableRow[row+1].children[col+1].style.backgroundColor,
+            if (toCheckMatchedCellColour(tableRow[row].children[col].style.backgroundColor, tableRow[row+1].children[col+1].style.backgroundColor,
                 tableRow[row+2].children[col+2].style.backgroundColor,tableRow[row+3].children[col+3].style.backgroundColor)){
                     return true;
                 }
@@ -178,7 +178,7 @@ function diagonalCheck(){
 function diagonalCheck2(){
     for(let col = 0; col < +columnCell-3; col++){
         for (let row = +rowCell-1; row > 2; row--){
-            if (colorMatchCheck(tableRow[row].children[col].style.backgroundColor, tableRow[row-1].children[col+1].style.backgroundColor,
+            if (toCheckMatchedCellColour(tableRow[row].children[col].style.backgroundColor, tableRow[row-1].children[col+1].style.backgroundColor,
                 tableRow[row-2].children[col+2].style.backgroundColor,tableRow[row-3].children[col+3].style.backgroundColor)){
                     return true;
             }
