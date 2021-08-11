@@ -33,6 +33,25 @@ window.onclick = function(event) {
     }
   }
 
+  //reating Dynamic Table using user input
+
+function createDynamiCells (rowCell,columnCell){
+    const table= document.getElementById("Dot-table");
+    const tableBody = document.createElement('TBODY');
+    table.appendChild(tableBody);
+    for(let i = 0;i<+rowCell;i++){
+        const tableRow= document.createElement("TR");
+        tableBody.appendChild(tableRow);
+        for(j=0;j<+columnCell;j++){
+            const tableData = document.createElement('TD');
+            tableData.classList.add("slot");
+            tableRow.appendChild(tableData)
+        }
+    }
+}
+createDynamiCells(rowCell,columnCell)
+//
+
  
 // catching the dom element to perform the task on them later
 
@@ -40,7 +59,7 @@ var tableRow = document.getElementsByTagName('tr');
 var tableData = document.getElementsByTagName('td');
 var playerTurn = document.querySelector('.player-turn');
 let userInfo = document.querySelector('.User-info');
-const slots = document.querySelectorAll('.slot');
+let slots = document.querySelectorAll('.slot');
 const resetBtn = document.querySelector('.reset');
 let playericon = document.querySelector('.playercolor');
 let modalContent = document.querySelector('.modal-text');
@@ -54,6 +73,8 @@ function onLoadBody(){
     userInfo.style.display="none";
     resetBtn.style.display="none";
 }
+
+
 
 
 
@@ -95,24 +116,6 @@ function closeModalBtn(){
     modal.style.display = "none";
   }
 
-//reating Dynamic Table using user input
-
-function createDynamiCells (rowCell,columnCell){
-    const table= document.getElementById("Dot-table");
-    const tableBody = document.createElement('TBODY');
-    table.appendChild(tableBody);
-    for(let i = 0;i<+rowCell;i++){
-        const tableRow= document.createElement("TR");
-        tableBody.appendChild(tableRow);
-        for(j=0;j<+columnCell;j++){
-            const tableData = document.createElement('TD');
-            tableData.classList.add("slot");
-            tableRow.appendChild(tableData)
-        }
-    }
-}
-createDynamiCells(rowCell,columnCell)
-//
 
 
 

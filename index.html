@@ -16,7 +16,7 @@
 <body onload="onLoadBody()">
     <nav class="navbar navbar-dark bg-dark navbar-outer">
         <a class="navbar-brand" href="/index.html">Connect Dots</a>
-        <a href="https://www.linkedin.com/in/rajnish-mishra97" >@RajnishMishra(Visit linkedin)</a>
+        <a href="https://www.linkedin.com/in/rajnish-mishra97">@RajnishMishra(Visit linkedin)</a>
     </nav>
 
     <button class="btn btn-primary start-game" onclick="showgameBoard()">Start Game</button>
@@ -26,20 +26,23 @@
         <h4 class="player-turn">"Best Of Luck"</h4>
         <div id="playericon" class="playercolor"></div>
     </div>
-    
+
     <div id="myModal1" class="modal-holder">
 
         <!-- Modal content -->
         <div class="modal-content">
-          <span id="closeModal" onclick="closeModalBtn()">&times;</span>
-         <!-- <input type="text" name="Name" value=""> -->
-         <h3 class="modal-text">Game Started</h3>
+            <span id="closeModal" onclick="closeModalBtn()">&times;</span>
+            <!-- <input type="text" name="Name" value=""> -->
+            <div class="imgHolder">
+                <h3 class="modal-text">Game Started</h3>
+                <img src="./Images/Win.gif" width="80px" />
+            </div>
         </div>
-      
-      </div>
+
+    </div>
     <div class="container-holder">
-      
-    
+
+
         <table id="Dot-table">
 
         </table>

@@ -139,3 +139,10 @@ body{
         text-decoration: none;
         cursor: pointer;
       }
+      .imgHolder{
+          display: flex;
+          justify-content: center;
+          flex-direction: row;
+            align-items:center ; 
+       }
+
