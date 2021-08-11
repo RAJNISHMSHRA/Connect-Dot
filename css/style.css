@@ -16,7 +16,19 @@ body{
 .navbar-outer{
     width: 100% !important;
     margin-bottom: 3%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
 }
+.navbar-outer a{
+   color: #fefefe;
+    text-decoration: none;
+}
+.navbar-outer a:hover{
+    color: #8599f0;
+     text-decoration: none;
+ }
 
 .container-holder-none{
     width:800px;
@@ -54,9 +66,8 @@ body{
     padding:5px !important;
 }
 .User-info{
-    display: flex;
+    display: none;
     flex-direction: row;
-    width: 250px;
     justify-content: space-between;
     margin-bottom: 3%;
 }
@@ -76,7 +87,7 @@ body{
     margin: 50px auto;
     width: 100px;
     height: 30px;
-    display: flex;
+    display: none;
     text-align: center;
     align-items: center;
     justify-content: center;

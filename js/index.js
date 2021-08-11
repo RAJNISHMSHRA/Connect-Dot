@@ -3,8 +3,8 @@ let player1;
 let player2;
 let columnCell,rowCell,totalCell;
 
-let player1Color = "Red";
-let player2Color = "Blue";
+let player1Color ;
+let player2Color ;
 
 while (!player1){
     player1 = prompt('Player One: Enter your name. You will be red.','Player 1');
@@ -19,13 +19,27 @@ while (!columnCell){
 while (!rowCell){
     rowCell = prompt('Select the number of rows. You will be yellow.',6);
 };
+while (!player1Color){
+    player1Color = prompt('Select Your Color or You will be Red.', "Red");
+};
+while (!player2Color){
+    player2Color = prompt('Select Your color or You will be yellow.',"Yellow");
+};
 
+//closing modal on clicking anywhere in window
+window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
 
+ 
 // catching the dom element to perform the task on them later
 
 var tableRow = document.getElementsByTagName('tr');
 var tableData = document.getElementsByTagName('td');
 var playerTurn = document.querySelector('.player-turn');
+let userInfo = document.querySelector('.User-info');
 const slots = document.querySelectorAll('.slot');
 const resetBtn = document.querySelector('.reset');
 let playericon = document.querySelector('.playercolor');
@@ -33,8 +47,15 @@ let modalContent = document.querySelector('.modal-text');
 const modal = document.getElementById("myModal1");
 let startGameDiv = document.querySelector('.Game-info');
 
-startGameDiv.innerHTML="Click start to Play";
-playerTurn="Best Of Luck"
+
+function onLoadBody(){
+    startGameDiv.innerHTML="Click start to Play";
+    startGameDiv.style.display="none";
+    userInfo.style.display="none";
+    resetBtn.style.display="none";
+}
+
+
 
 function showgameBoard(){
     const gameBoard= document.querySelector(".container-holder");
@@ -44,11 +65,17 @@ function showgameBoard(){
       if (buttonStart.innerHTML === "Start Game") {
         buttonStart.innerHTML= "Stop Game";
         modal.style.display = "block";
+        startGameDiv.style.display="block";
+        userInfo.style.display="flex";
         startGameDiv.innerHTML="Game has Started"
+        resetBtn.style.display="flex";
       } else {
         buttonStart.innerHTML= "Start Game";
         modal.style.display = "none";
+        startGameDiv.style.display="block";
+        userInfo.style.display="none";
         startGameDiv.innerHTML="Click start to Play"
+        resetBtn.style.display="none";
       }
 
       if (gameBoard.style.display === "none" || gameBoard.style.display === "") {
@@ -112,11 +139,13 @@ function changeColor(e){
                     playerTurn.style.color = player1Color;
                     playericon.style.backgroundColor=player1Color;
                     modalContent.innerHTML= `${player1} WINS!!`;
+                    startGameDiv.innerHTML="Click Reset to Start Again"
                     modal.style.display = "block";
                     return alert(`${player1} WINS!!`);
                 }else if (drawCheck()){
                     playerTurn.textContent = 'DRAW!';
                     modalContent.innerHTML= `Match was Draw!!`;
+                    startGameDiv.innerHTML="Click Reset to Start Again"
                     modal.style.display = "block";
                     return alert('DRAW!');
                 }else{
@@ -132,11 +161,13 @@ function changeColor(e){
                     playerTurn.style.color = player2Color;
                     playericon.style.backgroundColor=player2Color;
                     modalContent.innerHTML= `${player2} WINS!!`;
+                    startGameDiv.innerHTML="Click Reset to Start Again"
                     modal.style.display = "block";
                     return alert(`${player2} WINS!!`);
                 }else if (drawCheck()){
                     playerTurn.textContent = 'DRAW!';
                     modalContent.innerHTML= `Match was Draw!!`;
+                    startGameDiv.innerHTML="Click Reset to Start Again"
                     modal.style.display = "block";
                     return alert('DRAW!');
                 }else{
@@ -241,6 +272,7 @@ resetBtn.addEventListener('click', () => {
         slot.style.backgroundColor = 'white';
     });
     playericon.style.backgroundColor='white';
+    startGameDiv.innerHTML="Game has Started"
     playerTurn.style.color = 'black';
     return (currentPlayer === 1 ? playerTurn.textContent = `${player1}'s turn` : playerTurn.textContent = `${player2}'s turn`);
 });
