@@ -86,6 +86,7 @@ function showgameBoard(){
       if (buttonStart.innerHTML === "Start Game") {
         buttonStart.innerHTML= "Stop Game";
         modal.style.display = "block";
+        modalContent.innerHTML = "Game has Started";
         startGameDiv.style.display="block";
         userInfo.style.display="flex";
         startGameDiv.innerHTML="Game has Started"
@@ -276,6 +277,7 @@ resetBtn.addEventListener('click', () => {
     });
     playericon.style.backgroundColor='white';
     startGameDiv.innerHTML="Game has Started"
+    modalContent.innerHTML= `Game has restarted`;
     playerTurn.style.color = 'black';
     return (currentPlayer === 1 ? playerTurn.textContent = `${player1}'s turn` : playerTurn.textContent = `${player2}'s turn`);
 });
